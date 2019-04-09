@@ -6,9 +6,8 @@
 
 
 ## 集成
-```shell
-composer require yiche/table-shard 1.0
-```
+- composer require yiche/table-shard-dev:master
+- php artisan yiche:tableShard-install
 
 
 ## 使用

@@ -1,19 +1,25 @@
 {
-    "name": "yiche/table-shard",
-    "authors": [
-        {
-            "name": "飞 李",
-            "email": "lif@lrwanche.com"
-        }
-    ],
-    "require": {
-    	"php": ">=7.0.0",
-		"laravel/framework": "5.5.*"
-
-    },
-    "autoload": {
-        "psr-4": {
-            "Yiche\\TableShard\\": "src/"
-        }
+  "name": "yiche/table-shard",
+  "authors": [
+    {
+      "name": "飞 李",
+      "email": "lif@lrwanche.com"
     }
+  ],
+  "require": {
+    "php": ">=7.0.0",
+    "laravel/framework": "5.5.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Yiche\\TableShard\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Yiche\\TableShard\\TableShardServiceProvider"
+      ]
+    }
+  }
 }
