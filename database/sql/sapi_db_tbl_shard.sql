@@ -11,11 +11,36 @@
  Target Server Version : 50720
  File Encoding         : 65001
 
- Date: 09/04/2019 13:55:39
+ Date: 09/04/2019 14:15:55
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for sapi_db_tbl
+-- ----------------------------
+DROP TABLE IF EXISTS `sapi_db_tbl`;
+CREATE TABLE `sapi_db_tbl` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `tbl_name` char(60) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '主表名称',
+  `tbl_sub_num` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '分表总数量（字段冗余维护）',
+  `tbl_name_latest` char(60) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '最新分表名称',
+  `tbl_order_latest` int(10) unsigned NOT NULL DEFAULT '1' COMMENT '最新分表序号',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `deleted_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '删除时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `tbl_name` (`tbl_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='数据库表（分表总管理）';
+
+-- ----------------------------
+-- Records of sapi_db_tbl
+-- ----------------------------
+BEGIN;
+INSERT INTO `sapi_db_tbl` VALUES (1, 'e_request', 1, 'e_request_1', 1, '2019-03-20 09:22:55', '2019-03-20 09:23:04', '0000-00-00 00:00:00');
+INSERT INTO `sapi_db_tbl` VALUES (2, 'e_callback', 1, 'e_callback_1', 1, '2019-03-20 11:51:39', '2019-03-20 11:51:43', '0000-00-00 00:00:00');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for sapi_db_tbl_shard
